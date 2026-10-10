@@ -80,6 +80,29 @@ services:
       - globalshop_network
 
 
+
+  node1-replica:
+    image: postgres:16
+    container_name: globalshop_node1_replica
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: globalshop
+      POSTGRES_PASSWORD: globalshop123
+      POSTGRES_DB: globalshop
+      PGDATA: /var/lib/postgresql/data
+    command:
+      - postgres
+      - -c
+      - hot_standby=on
+    ports:
+      - "5437:5432"
+    volumes:
+      - node1_replica_data:/var/lib/postgresql/data
+    networks:
+      - globalshop_network
+
+
+
 # =========================
 # VOLUMES
 # =========================
@@ -88,6 +111,7 @@ volumes:
   node2_data:
   node3_data:
   node4_data:
+  node1_replica_data:
 
 
 # =========================
@@ -96,3 +120,7 @@ volumes:
 networks:
   globalshop_network:
     driver: bridge
+
+
+
+  
