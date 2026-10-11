@@ -8,7 +8,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 API_URL = "http://127.0.0.1:8000/orders/"
 CLIENT_ID = 1
 CLIENT_REGION = "AFRICA"
-PRODUCT_ID = 10
+PRODUCT_ID = 11
 QUANTITY = 1
 TOTAL_REQUESTS = 100
 MAX_WORKERS = 100
